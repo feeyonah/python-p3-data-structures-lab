@@ -17,22 +17,47 @@ spicy_foods = [
 ]
 
 def get_names(spicy_foods):
-    pass
+    names = [food["name"]for food in spicy_foods]
+    return names 
 
 def get_spiciest_foods(spicy_foods):
-    pass
+    spiciness=[spice for spice  in spicy_foods if spice["heat_level"] >5]
+    return spiciness
 
 def print_spicy_foods(spicy_foods):
-    pass
+    for food in spicy_foods:
+        heat_level = "🌶" * food["heat_level"]
+        print(f"{food['name']} ({food['cuisine']}) | Heat Level: {heat_level}")
 
 def get_spicy_food_by_cuisine(spicy_foods, cuisine):
-    pass
-
+    for spice in spicy_foods:
+        if spice['cuisine']==cuisine:
+            return spice
+            #An example of how to use tiis function
+results=get_spicy_food_by_cuisine( spicy_foods,"American")
+print(results)
 def print_spiciest_foods(spicy_foods):
-    pass
+    hot_and_sweet = get_spiciest_foods(spicy_foods)
+    for spice in hot_and_sweet:
+        heat_level = "🌶" * spice["heat_level"]
+        print(f"{spice['name']} ({spice['cuisine']}) | Heat Level: {heat_level}")
 
 def get_average_heat_level(spicy_foods):
-    pass
+    if not spicy_foods:
+        return 0
+    addition=sum(food["heat_level"] for food in spicy_foods)
+    average=addition//len(spicy_foods)
+    return average
 
 def create_spicy_food(spicy_foods, spicy_food):
-    pass
+    spicy_foods.append(spicy_food)
+    return spicy_foods
+#an example of how to use this function
+spicy_food={
+"name":"maize",
+"cuisan":"portugal",
+"heat_level":"4"
+
+}
+new_spicy_foods=create_spicy_food(spicy_foods,spicy_food)
+print(new_spicy_foods)
